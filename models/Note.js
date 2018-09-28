@@ -1,23 +1,24 @@
-// require mongoose//
+ // Require mongoose
 var mongoose = require("mongoose");
-
-//create Schema class//
+// Create a schema object constructor
 var Schema = mongoose.Schema;
 
-//create the note schema/
-
-var NoteSchema = new Schema({
-    body: {
-        type: String
-    }
+// Create the Comment schema
+var CommentSchema = new Schema({
+  // name is a string that's required 
+  name: {
+    type: String,
+    required: true
+  },
+  // body is a string that's required
+  body: {
+    type: String,
+    required: true
+  }
 });
 
-// Keep in mind that Mongoose will automaticly save the objids of notes/
-//these ids are referred to in the Aritical model/
+// Create the Comment model with the CommentSchema
+var Comment = mongoose.model("Comment", CommentSchema);
 
-//create the note model with the NoteSchema/
-
-var Note = mongoose.model("Note", NoteSchema);
-
-//exports the Note model
-module.exports = Note;
+// Exports the Comment model
+module.exports = Comment;
